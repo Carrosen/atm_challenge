@@ -7,8 +7,8 @@ describe Atm do
     pin_code = '1234'
     
     before do
-        allow(account).to receive(:balance).and_return(100)
-        allow(account).to receive(:balance=) 
+        allow(account).to receive(:balance).and_return(1000)
+        allow(account).to receive(:balance=)
     end
     
     it 'has 1000$ on initialize' do
@@ -21,9 +21,12 @@ describe Atm do
     end
 
     it 'allows withdraw if account has enough balance.' do
+        if account_status != :disabled then
         expected_output = { status: true, message: 'success', date: Date.today, amount: 45 }
         expect(subject.withdraw(45, pin_code, account)).to eq expected_output
+        end
     end
+
 
     it 'rejects withdraw if account has insufficient funds' do
         expected_output = { status: false, message: 'insufficient funds', date: Date.today }
@@ -47,9 +50,9 @@ describe Atm do
         expect(subject.withdraw(6, pin_code, account)).to eq expected_output
     end
 
-    it 'Check if account is disabled' do
+    it 'reject withdraw if account is disabled' do
         allow(account).to receive(:account_status).and_return(:disabled)
-        expected_output = { status: false, message: 'card expired', date: Date.today }
+        expected_output = { status: false, message: 'account disabled', date: Date.today }
         expect(subject.withdraw(6, pin_code, account)).to eq expected_output
     end
 
