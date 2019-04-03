@@ -1,13 +1,12 @@
 require './lib/account.rb'
 
 describe Account do
-    let(:person) {instance_double('Person', name: 'Thomas')}
+    let(:person) {instance_double('Person', name: 'Thomas', pin_code: '1234')}
     subject { described_class.new({owner: person}) }
 
-    it 'check length of a number' do
-        number = 1234
-        number_length = Math.log10(number).to_i + 1
-        expect(number_length).to eq 4
+    it 'check length of a pin_code' do
+        subject.pin_code
+        expect(subject.pin_code).to eq 4
     end
 
     it 'is expected to have an expiry date on initialize' do
