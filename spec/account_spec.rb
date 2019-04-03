@@ -17,10 +17,13 @@ describe Account do
         expect(subject.account_status).to eq :active
     end
 
-    it 'deactivates account using Class method' do
-        Account.deactivate(subject)
+    it 'deactivates account using Instance method' do
+        subject.deactivate
         expect(subject.account_status).to eq :deactivated
+
     end
 
+  
 
 end
+
