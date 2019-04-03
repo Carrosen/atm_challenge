@@ -49,7 +49,7 @@ class Atm
     end
 
     def account_disabled?(account_status)
-      account_status !=(:active)
+      account_status !=(:active) 
     end
   
 
