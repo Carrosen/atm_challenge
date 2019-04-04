@@ -1,7 +1,7 @@
-require './lib/account'
+require './lib/account.rb'
 
 class Person
-  attr_accessor :name, :cash, :account, :create_account, :balance, :deposit
+  attr_accessor :name, :cash, :account, :create_account, :balance, :deposit_funds
 
   def initialize(attrs = {})
     @name = set_name(attrs[:name])
@@ -56,10 +56,6 @@ class Person
 
   def missing_atm
     raise RuntimeError, 'An ATM is required'
-  end
-
-  def balance(amount)
-    balance > deposit_funds
   end
 
 

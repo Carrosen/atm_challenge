@@ -24,7 +24,7 @@ describe Person do
   describe 'can create an Account' do
    before { subject.create_account }
     
-    it 'of Account class ' do
+    it 'of Account class' do
       expect(subject.account).to be_an_instance_of Account
     end
 
@@ -41,7 +41,7 @@ describe Person do
       expect(subject.deposit(100)).to be_truthy
     end
 
-    it 'funds are added to the accounst balance - deducted from cash' do
+    it 'funds are added to the account balance - deducted from cash' do
         subject.cash = 100
         subject.deposit(100)
         expect(subject.account.balance).to be 100
