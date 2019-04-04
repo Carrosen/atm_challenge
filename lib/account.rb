@@ -14,6 +14,7 @@ class Account
         @account_status = :active
         set_owner(attrs[:owner])
         @person = :nil
+        @balance = 0
 
     end
 
@@ -32,7 +33,7 @@ class Account
     end
 
     def balance
-        
+        @balance
     end
 
 
