@@ -1,12 +1,13 @@
 require './lib/account.rb'
 
 class Person
-  attr_accessor :name, :cash, :account, :create_account, :balance, :deposit_funds
+  attr_accessor :name, :cash, :account, :create_account, :balance, :deposit_funds, :pin_code
 
   def initialize(attrs = {})
     @name = set_name(attrs[:name])
     @cash = 0
     @account = nil
+    @pin_code = rand(1000..9999)
   end
 
   def create_account
