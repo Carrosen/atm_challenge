@@ -1,5 +1,5 @@
-require './lib/person'
-require './lib/atm'
+require './lib/person.rb'
+require './lib/atm.rb'
 
 describe Person do
 
@@ -22,8 +22,7 @@ describe Person do
   end
 
   describe 'can create an Account' do
-   
-    before { subject.create_account }
+   before { subject.create_account }
     
     it 'of Account class ' do
       expect(subject.account).to be_an_instance_of Account
@@ -66,13 +65,7 @@ describe Person do
         expect(subject.account.balance).to be 0
         expect(subject.cash).to be 100
       end
-
- 
-
-
-
-
-  end
+    end
 
   describe 'can not manage funds if no account been created' do
  
