@@ -1,17 +1,21 @@
 require 'date'
 
+require './lib/person.rb'
+
 class Account
     
     STANDARD_VALIDITY_YRS = 5
     
-    attr_accessor :pin_code, :exp_date, :account_status, :owner, :balance
+    attr_accessor :pin_code, :exp_date, :account_status, :owner, :balance, :cash, :person
 
     def initialize(attrs = {})
         @pin_code = rand(1000..9999)
         @exp_date = set_expire_date
         @account_status = :active
         set_owner(attrs[:owner])
-        end
+        @person = :nil
+
+    end
 
     def pin_code
         number = @pin_code
@@ -28,8 +32,9 @@ class Account
     end
 
     def balance
-           
+        
     end
+
 
 
     private

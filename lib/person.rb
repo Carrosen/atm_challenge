@@ -36,6 +36,7 @@ class Person
     pin = args[:pin]
     response = atm.withdraw(amount, pin, account)
     response[:status] == true ? increase_cash(response) : response
+   # account.balance -= amount
   end
 
   def increase_cash(response)
