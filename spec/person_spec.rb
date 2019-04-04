@@ -66,7 +66,6 @@ describe Person do
       
   
       it 'funds are added to cash - deducted from account balance' do
-     
         subject.cash = 100
         subject.deposit(100)
         subject.withdraw(amount: 100, pin: subject.account.pin_code, account: subject.account, atm: atm)

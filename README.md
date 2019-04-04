@@ -5,7 +5,7 @@ In order to make an withdraw
 The ATM needs to have funds
 
 As a User               
-In order to know if my withdrawal was successful or unsuccessful          I want to receive a message with my withdrawal details
+In order to know if my withdrawal was successful or unsuccessful    I want to receive a message with my withdrawal details
 
 As an ATM operator          
 In order for the right person to make a withdrawal            
@@ -50,3 +50,11 @@ I would like to be able to make a deposit
 As a Person without a Bank Account,
 In order to prevent me from using the wrong bank account,
 I should NOT be able to to make a deposit.
+
+
+#det som person ska göra är pin_code, amount to withdraw
+
+#det vi behöver för att kunna göra det är balance och tillräckligt med funds i atm, och att pin_coden är korrekt, expired date, blablabla
+
+
+

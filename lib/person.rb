@@ -1,9 +1,11 @@
 require './lib/account.rb'
 require './lib/atm.rb'
 
+require 'pry'
+
 
 class Person
-  attr_accessor :name, :cash, :account, :create_account, :balance, :deposit_funds, :pin_code
+  attr_accessor :name, :cash, :account, :create_account, :balance, :deposit_funds, :pin_code, :atm
 
   def initialize(attrs = {})
     @name = set_name(attrs[:name])
@@ -20,8 +22,8 @@ class Person
     @account == nil ? missing_account : deposit_funds(amount)
   end
 
-  def withdraw(args = {})
-    @account == nil ? missing_account : withdraw_funds(args)
+  def withdraw(args = { amount: 100, pin: subject.account.pin_code, account: subject.account, atm: atm })
+  @account == nil ? missing_account : withdraw_funds(args)
   end
 
 

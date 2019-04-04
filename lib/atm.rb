@@ -9,7 +9,6 @@ class Atm
 
     def initialize
         @funds = 1000
-        @atm = 'atm'
     end
 
     def withdraw(amount, pin_code, account)
