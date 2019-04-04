@@ -1,6 +1,8 @@
 require 'date'
 
 require './lib/person.rb'
+require './lib/atm.rb'
+
 
 class Account
     
@@ -13,7 +15,6 @@ class Account
         @exp_date = set_expire_date
         @account_status = :active
         set_owner(attrs[:owner])
-        @person = :nil
         @balance = 0
 
     end

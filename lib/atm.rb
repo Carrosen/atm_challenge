@@ -1,11 +1,15 @@
 require 'date'
 
+require './lib/person.rb'
+require './lib/account.rb'
+
 class Atm
-    attr_accessor :funds
+    attr_accessor :funds, :atm
    
 
     def initialize
         @funds = 1000
+        @atm = 'atm'
     end
 
     def withdraw(amount, pin_code, account)

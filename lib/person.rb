@@ -1,4 +1,6 @@
 require './lib/account.rb'
+require './lib/atm.rb'
+
 
 class Person
   attr_accessor :name, :cash, :account, :create_account, :balance, :deposit_funds, :pin_code
@@ -7,7 +9,7 @@ class Person
     @name = set_name(attrs[:name])
     @cash = 0
     @account = nil
-    @pin_code = rand(1000..9999)
+   
   end
 
   def create_account
@@ -37,7 +39,7 @@ class Person
     pin = args[:pin]
     response = atm.withdraw(amount, pin, account)
     response[:status] == true ? increase_cash(response) : response
-   # account.balance -= amount
+  
   end
 
   def increase_cash(response)
