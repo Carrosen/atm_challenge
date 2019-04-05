@@ -5,7 +5,7 @@ require 'pry'
 
 describe Person do
 
-  subject { described_class.new(name: 'Thomas', pin_code: 9999 ) }
+  subject { described_class.new(name: 'Thomas' ) }
 
   it 'is expected to have a :name on initialize' do
     expect(subject.name).not_to be nil
@@ -39,32 +39,35 @@ describe Person do
   describe 'can manage funds if an account been created' do
     let(:atm) { Atm.new }
 
-    before { subject.create_account }
+   
+    before { 
+      subject.create_account
+      subject.create_ATM
+      subject.enter_pin(9999)
+      subject.deposit(100)
+    }
 
     it 'can deposit funds' do
       expect(subject.deposit(100)).to be_truthy
     end
 
     it 'funds are added to the account balance - deducted from cash' do
+        subject.account.balance = 0 
         subject.cash = 100
         subject.deposit(100)
         expect(subject.account.balance).to be 100
         expect(subject.cash).to be 0
       end
 
-
-    #Stefan testar ------------------------
-    
     it 'can withdraw funds' do
         expect(subject.withdraw(300)).to be_truthy
     end
 
-    before { {amount: 700, pin: 9999, account: @account} }
-      
-      it 'withdraw is expected to raise error if no ATM is passed in' do
-        command = lambda { subject.withdraw(amount)}
-        expect { command.call }.to raise_error 'An ATM is required'
-      end
+    it 'withdraw is expected to raise error if no ATM is passed in' do
+
+      command = lambda { subject.withdraw(200)}
+      expect { command.call }.to raise_error 'An ATM is required'
+    end
     
       
   

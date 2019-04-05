@@ -11,12 +11,16 @@ class Person
     @name = set_name(attrs[:name])
     @cash = 0
     @account = nil
-    @atm = Atm.new
+  
    
   end
 
   def create_account
     @account = Account.new(owner: self)
+  end
+
+  def create_ATM
+    @atm = Atm.new
   end
 
   def enter_pin(actual_pin)
