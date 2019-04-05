@@ -12,15 +12,18 @@ class Account
     attr_accessor :pin_code, :exp_date, :account_status, :owner, :balance, :cash, :person
 
     def initialize(attrs = {})
-        @pin_code = rand(1000..9999)
+        @pin_code = 9999
         @exp_date = set_expire_date
         @account_status = :active
         set_owner(attrs[:owner])
         @balance = 0
-
     end
 
     def pin_code
+        @pin_code  
+    end
+
+    def pin_code_length
         number = @pin_code
         number_length = Math.log10(number).to_i + 1
         return number_length

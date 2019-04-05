@@ -7,8 +7,8 @@ describe Account do
     subject { described_class.new({owner: person}) }
 
     it 'check length of a pin_code' do
-        subject.pin_code
-        expect(subject.pin_code).to eq 4
+        subject.pin_code_length
+        expect(subject.pin_code_length).to eq 4
     end
 
     it 'is expected to have an expiry date on initialize' do

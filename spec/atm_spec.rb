@@ -10,10 +10,12 @@ describe Atm do
         allow(account).to receive(:balance).and_return(100)
         allow(account).to receive(:balance=)
     end
-    
+    #Stefan testar ------------------------
     it 'has 1000$ on initialize' do
         expect(subject.funds).to eq 1000
     end
+
+    #--------------------------------------
 
     it 'funds are reduced at withdraw' do
         subject.withdraw(50, '1234', account)
