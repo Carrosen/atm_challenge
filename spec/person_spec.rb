@@ -13,7 +13,6 @@ describe Person do
 
   it 'is expected to raise error if no name is set' do
     expect { described_class.new }.to raise_error 'A name is required'
-  
   end
 
   it 'is expected to have a :cash attribute with value of 0 on initialize' do
@@ -42,7 +41,6 @@ describe Person do
    
     before { 
       subject.create_account
-      subject.create_ATM
       subject.enter_pin(9999)
       subject.deposit(100)
     }
@@ -60,21 +58,25 @@ describe Person do
       end
 
     it 'can withdraw funds' do
+        subject.create_ATM
         expect(subject.withdraw(300)).to be_truthy
     end
 
+    
     it 'withdraw is expected to raise error if no ATM is passed in' do
-
-      command = lambda { subject.withdraw(200)}
+      
+      command = lambda { (subject.withdraw(200)) }
       expect { command.call }.to raise_error 'An ATM is required'
     end
-    
-      
-  
+   
       it 'funds are added to cash - deducted from account balance' do
+        
+        subject.create_account
+        subject.enter_pin(9999)
+        subject.create_ATM
         subject.cash = 100
         subject.deposit(100)
-        subject.withdraw(amount: 100, pin: subject.account.pin_code, account: subject.account, atm: atm)
+        subject.withdraw(100)
         expect(subject.account.balance).to be 0
         expect(subject.cash).to be 100
       end
@@ -85,6 +87,9 @@ describe Person do
     it 'can\'t deposit funds' do
       expect { subject.deposit(100) }.to raise_error(RuntimeError, 'No account present')
     end
+
+
+    
   end
 
   #--------------------------------------
